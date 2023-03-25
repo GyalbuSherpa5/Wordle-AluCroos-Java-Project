@@ -33,18 +33,18 @@ class Wordle {
             for (int j = 0; j < 5; j++) {
                 if (character[i] == answer[j]) {
                     if (i == j) {
-                        System.out.print("| " + Color.GREEN_BOLD + character[i] + Color.RESET + " | ");
+                        System.out.print(Color.GREEN_BOLD_BRIGHT + "| " + character[i] + " | " + Color.RESET);
                         flag = false;
                         count++;
                         break;
                     }
-                    System.out.print("| " + Color.YELLOW_BOLD + character[i] + Color.RESET + " | ");
+                    System.out.print(Color.YELLOW_BOLD_BRIGHT + "| " + character[i] + " | " + Color.RESET);
                     flag = false;
                     break;
                 }
             }
             if (flag) {
-                System.out.print("| " + Color.RED_BOLD + character[i] + Color.RESET + " | ");
+                System.out.print(Color.RED_BOLD_BRIGHT + "| " + character[i] + " | " + Color.RESET);
             }
         }
 
@@ -97,6 +97,7 @@ class Wordle {
                     break;
                 } else if (j == 5) {
                     System.out.println("You lost!");
+                    System.out.println("Answer was " + solution);
                     playAgain = w.playAgain(sc);
                 }
             }
