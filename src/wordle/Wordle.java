@@ -13,7 +13,7 @@ class Wordle {
 
     public int play(char[] character) {
 
-        char[] answer = {'s', 't', 'a', 'l', 'k'};
+        char[] answer = {'t', 't', 'a', 'l', 'k'};
 
         for (int i = 0; i < 5; i++) {
             System.out.print("+---+ ");
