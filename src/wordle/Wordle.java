@@ -1,48 +1,77 @@
 package wordle;
 
 import java.util.Scanner;
+
 class Wordle {
-    public void vaaa(char[] character){
+    public String[] words() {
+        String[] word = {"ABACK", "ABOVE", "ADMIT", "ADOPT", "ADORE",
+                "BIRTH", "BELLY", "BENCH", "CHOKE", "CHORD", "CHUNK", "ENJOY", "EPOCH", "FAULT", "FAVOR", "FEAST",
+                "GAMER", "GREAT", "GREET", "HUMAN", "HUMOR", "HORSE", "JUDGE", "KARMA", "IONIC", "IRONY", "ITCHY",
+                "LOFTY", "LOOPY", "LOSER"};
+        return word;
+    }
 
-        char answer[] = {'s','t','a','l','k'};
+    public int play(char[] character) {
 
+        char[] answer = {'s', 't', 'a', 'l', 'k'};
 
-        for(int i=0; i<5; i++){
+        for (int i = 0; i < 5; i++) {
             System.out.print("+---+ ");
         }
         System.out.println();
-        for(int i=0; i<5; i++){
+
+        int count = 0;
+        for (int i = 0; i < 5; i++) {
             boolean flag = true;
-            for(int j=0; j<5; j++){
-                if(character[i]==answer[j]){
-                    System.out.print("| "+Color.YELLOW+character[i]+Color.RESET+" | ");
+            for (int j = 0; j < 5; j++) {
+                if (character[i] == answer[j]) {
+                    if (i == j) {
+                        System.out.print("| " + Color.GREEN_BOLD + character[i] + Color.RESET + " | ");
+                        flag = false;
+                        count++;
+                        break;
+                    }
+                    System.out.print("| " + Color.YELLOW_BOLD + character[i] + Color.RESET + " | ");
                     flag = false;
                     break;
                 }
             }
-            if(flag){
-                System.out.print("| "+Color.RED+character[i]+Color.RESET+" | ");
+            if (flag) {
+                System.out.print("| " + Color.RED_BOLD + character[i] + Color.RESET + " | ");
             }
         }
         System.out.println();
-        for(int i=0; i<5; i++){
+        for (int i = 0; i < 5; i++) {
             System.out.print("+---+ ");
         }
+        System.out.println();
+        return count;
     }
+
     public static void main(String[] args) {
-//        char arr[] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
-//                't', 'u', 'v', 'w', 'x', 'y', 'z'};
-
-        char userInput[] = new char[5];
-        Scanner sc = new Scanner(System.in);
-        for (int i = 0; i < 5; i++) {
-            char line = sc.next().charAt(0);
-            userInput[i] = line;
-        }
         Wordle w = new Wordle();
-        w.vaaa(userInput);
 
+        for (int j = 0; j < 6; j++) {
+            char[] userInput = new char[5];
+            Scanner sc = new Scanner(System.in);
 
+            boolean validInput = false;
+            while (!validInput) {
+                String word = sc.nextLine().toLowerCase();
+                if (word.length() == 5) {
+                    for (int i = 0; i < word.length(); i++) {
+                        userInput[i] = word.charAt(i);
+                    }
+                    validInput = true;
+                } else {
+                    System.out.println("Please enter 5 lettered word");
+                }
+            }
+            int count = w.play(userInput);
+            if (count == 5) {
+                System.out.println("You won!");
+                break;
+            }
+        }
     }
-
 }
