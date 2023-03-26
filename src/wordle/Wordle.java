@@ -1,4 +1,5 @@
 package wordle;
+import java.sql.SQLOutput;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -24,30 +25,38 @@ public class Wordle {
 
 
     public static void main(String[] args){
+        int flag=1;
 
 
         //for showing the pattern
-        do{
-            pattern(count);
+      while(flag==1){
+
+          do{
+              pattern(count);
 
 
-            Scanner sc=new Scanner(System.in);
+              Scanner sc=new Scanner(System.in);
 
-            System.out.println("Input your string");
+              System.out.println("Input your string");
 
-            String input=sc.nextLine();
+              String input=sc.nextLine();
 
-            checkWord(input);
+              checkWord(input);
 
-            outFormatter(arr3);
+              outFormatter(arr3);
 
-            if(Arrays.equals(arr1,arr2)){
+              if(Arrays.equals(arr1,arr2)){
 
-                break;
-            }
+                  System.out.println("IF you want to play again enter 1 or 0 if not.");
+                  flag=sc.nextInt();
+                  count=0;
 
-        }
-        while(count<6);
+                  break;
+              }
+
+          }
+          while(count<6);
+      }
     }
 
     public static void pattern(int n){
@@ -60,7 +69,7 @@ public class Wordle {
             System.out.println("");
             for( i=0;i<5;i++){
 
-                System.out.print("|" + "  " +  " |");
+                System.out.print("|" + "   " +  " |");
             }
             System.out.println("");
             for(  i=0;i<5;i++){
