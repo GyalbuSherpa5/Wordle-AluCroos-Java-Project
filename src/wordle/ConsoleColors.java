@@ -1,6 +1,0 @@
-package wordle;
-
-enum Color {
-
-}
-
