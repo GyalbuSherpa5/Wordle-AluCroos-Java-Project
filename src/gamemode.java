@@ -37,6 +37,7 @@ public class gamemode {
                     case 8 -> arr[2][1] = sym;
                     case 9 -> arr[2][2] = sym;
                 }
+
                 if(count>2) {
                     if (arr[0][0] == 'X' && arr[0][1] == 'X' && arr[0][2] == 'X') {
                         System.out.println("Player Wins");
