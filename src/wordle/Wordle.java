@@ -2,10 +2,12 @@ package wordle;
 import java.sql.SQLOutput;
 import java.util.Arrays;
 import java.util.Scanner;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Wordle {
 
-    public static String arr = "rupes";
+
+    static String  arr=getWord().toLowerCase();
 
     //converting string to character
     public static char[] arr1 = arr.toCharArray();
@@ -25,6 +27,22 @@ public class Wordle {
 
     public static int count = 0;
 
+    public static String getWord(){
+
+
+        String[] words = {"ABOVE", "ADMIT", "ADOPT", "ADORE", "BIRTH", "BENCH", "CHOKE",
+                "CHORD", "CHUNK", "DRIVE", "DUTCH", "DRAIN", "ENJOY", "EPOCH", "FAULT", "FAVOR", "" +
+                "FEAST", "GAMER", "GREAT", "HUMAN", "HUMOR", "HORSE", "JUDGE", "JOKER", "IRONY", "ITCHY", "LOFTY", "LOSER",
+                "MONTH", "MODEL", "OPERA", "PAUSE", "PURGE", "ROBIN", "ROUND", "ROYAL", "SCOLD", "SHAKE", "SHAME", "SKIRT",
+                "SMITE", "SNEAK", "SOLAR", "SOUND", "STORY", "TOUGH", "TWICE", "UNIFY", "VIRAL", "VITAL", "WACKY", "WASTE",
+                "WORSE", "YIELD", "YOUTH"};
+
+        int index = ThreadLocalRandom.current().nextInt(words.length);
+        return words[index];
+
+
+    }
+
 
     public static void main(String[] args) {
         int flag = 1;
@@ -42,11 +60,15 @@ public class Wordle {
                 System.out.println("Input your string");
 
 
-                String input = sc.nextLine();
+                String solution= getWord().toLowerCase();
+                System.out.println(solution);
+
+
+                String input = sc.nextLine().toLowerCase();
 
                 while(input.length()!=5) {
                     System.out.println("Input a string of 5 letter.");
-                    input=sc.nextLine();
+                    input=sc.nextLine().toLowerCase();
                 }
 
                 checkWord(input);
@@ -110,11 +132,12 @@ public class Wordle {
 
     public static void checkWord(String input) {
         arr2 = input.toCharArray();
+        count+=1;
 
 
         for (int j = 0; j < arr2.length; j++) {
 
-            char a = arr2[count];
+            char a = arr2[j];
             n = BLACK + a + RESET;
 
 
