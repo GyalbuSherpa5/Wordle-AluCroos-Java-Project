@@ -5,12 +5,16 @@ import java.util.concurrent.ThreadLocalRandom;
 
 class Wordle {
     public String words() {
-        String[] word = {"ABOVE", "ADMIT", "ADOPT", "ADORE",
-                "BIRTH", "BENCH", "CHOKE", "CHORD", "CHUNK", "DRIVE", "DUTCH", "DRAIN", "ENJOY", "EPOCH", "FAULT",
-                "FAVOR", "FEAST", "GAMER", "GREAT", "HUMAN", "HUMOR", "HORSE", "JUDGE", "JOKER", "IRONY", "ITCHY",
-                "LOFTY", "LOSER", "MONTH", "MODEL", "OPERA", "PAUSE", "PURGE", "ROBIN", "ROUND",
-                "ROYAL", "SCOLD", "SHAKE", "SHAME", "SKIRT", "SMITE", "SNEAK", "SOLAR", "SOUND", "STORY",
-                "TOUGH", "TWICE", "UNIFY", "VIRAL", "VITAL", "WACKY", "WASTE", "WORSE", "YIELD", "YOUTH"};
+        String[] word = {"ABOVE", "ADMIT", "ADOPT", "ADORE", "APPLY", "APPLE",
+                "BIRTH", "BENCH", "BRIBE", "CHOKE", "CHORD", "CHUNK", "CRASS", "DRIVE", "DUTCH", "DRAIN", "ENJOY",
+                "ESSAY", "EPOCH", "FAULT",
+                "FAVOR", "FLOOR", "FEAST", "GAMER", "GREAT", "GLOOM", "HURRY", "HUMAN", "HUMOR", "HORSE", "JUDGE",
+                "JOKER", "IRONY", "ITCHY",
+                "LOFTY", "LOSER", "MONTH", "MODEL", "MADAM", "OPERA", "PAUSE", "PURGE", "ROBIN", "ROUND",
+                "ROYAL", "SCOLD", "SHAKE", "SKILL", "SHAME", "SKIRT", "SMITE", "SNEAK", "SOLAR", "SOUND", "STORY",
+                "TOUGH", "TWICE", "TROLL", "UNIFY", "VIRAL", "VITAL", "VIVID", "WACKY", "WASTE", "WORSE", "YIELD",
+                "YOUTH"};
+
         int index = ThreadLocalRandom.current().nextInt(word.length);
         return word[index];
     }
@@ -31,10 +35,11 @@ class Wordle {
         for (int i = 0; i < 5; i++) {
             boolean flag = true;
             for (int j = 0; j < 5; j++) {
-                if (character[i] == answer[j]) {
+                if (character[j] != ' ' && character[i] == answer[j]) {
                     if (i == j) {
                         System.out.print(Color.GREEN_BOLD_BRIGHT + "| " + character[i] + " | " + Color.RESET);
                         flag = false;
+                        character[j] = ' ';
                         count++;
                         break;
                     }
@@ -72,6 +77,7 @@ class Wordle {
         boolean playAgain = true;
         while (playAgain) {
             String solution = w.words().toLowerCase();
+//            String solution = "apple";
             System.out.println("Welcome, Enter a word ");
             int count;
             for (int j = 0; j < 6; j++) {
