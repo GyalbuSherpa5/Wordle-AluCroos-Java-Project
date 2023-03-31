@@ -27,15 +27,51 @@ public class gamemode {
                 }
 
                 switch (set) {
-                    case 1 -> arr[0][0] = sym;
-                    case 2 -> arr[0][1] = sym;
-                    case 3 -> arr[0][2] = sym;
-                    case 4 -> arr[1][0] = sym;
-                    case 5 -> arr[1][1] = sym;
-                    case 6 -> arr[1][2] = sym;
-                    case 7 -> arr[2][0] = sym;
-                    case 8 -> arr[2][1] = sym;
-                    case 9 -> arr[2][2] = sym;
+
+                    case 7 -> {
+                        if(arr[0][0]=='\0')
+                            arr[0][0] = sym;
+                             else{
+                                j--;
+                                count--;
+
+                        }
+
+                    }
+                    case 8 -> {
+                        if (arr[0][1] == '\0')
+                            arr[0][1] = sym;
+                        else{j--;
+                        count--;}
+                    }
+
+                    case 9 -> {
+                        if (arr[0][2] == '\0')
+                        arr[0][2] = sym;
+                        else{j--;
+                        count--;}
+                    }
+                    case 4 ->{
+                    if (arr[1][0] == '\0')arr[1][0] = sym;
+                    else{j--;
+                    count--;}}
+                    case 5 -> {if (arr[1][1] == '\0')arr[1][1] = sym;
+                    else{
+                        j--;
+                        count--;
+                    }}
+                    case 6 -> {if (arr[1][2] == '\0')arr[1][2] = sym;
+                    else{j--;
+                    count--;}}
+                    case 1 -> {if (arr[2][0] == '\0')arr[2][0] = sym;
+                    else{j--;
+                    count--;}}
+                    case 2 -> {if (arr[2][1] == '\0')arr[2][1] = sym;
+                    else{j--;
+                    count--;}}
+                    case 3 -> {if (arr[2][2] == '\0')arr[2][2] = sym;
+                    else{j--;
+                    count--;}}
                 }
 
                 if(count>2) {
